@@ -1,7 +1,6 @@
 import sys
 import os
 import shutil
-import patoolib
 import re
 from pathlib import Path
 
@@ -24,7 +23,7 @@ def sort(a):
 def creat_folders():
     for q in folders:
         try:
-            os.mkdir(r"C:\Users\599xx\Desktop\Hlam\\" + q)
+            os.mkdir(Path(a) + q)
         except FileExistsError:
             pass
 
@@ -33,39 +32,39 @@ def fnc():
     for i in a.glob("**/*"):
         if i.suffix in ['.doc', '.docx', '.txt', '.pdf', '.xlsx', '.pptx']:
             try:
-                shutil.move(i, r"C:\Users\599xx\Desktop\Hlam\documents")
+                shutil.move(i, os.path.join(a, 'documents'))
             except shutil.Error:
                 continue
         elif i.suffix in ['.jpeg', '.png', '.jpg', '.svg']:
             try:
-                shutil.move(i, r"C:\Users\599xx\Desktop\Hlam\image")
+                shutil.move(i, os.path.join(a, 'image'))
             except shutil.Error:
                 continue
         elif i.suffix in ['.avi', '.mp4', '.mdv', '.mkv']:
             try:
-                shutil.move(i, r"C:\Users\599xx\Desktop\Hlam\video")
+                shutil.move(i, os.path.join(a, 'video'))
             except shutil.Error:
                 continue
         elif i.suffix in ['.mp3', '.ogg', '.wav', '.amr']:
             try:
-                shutil.move(i, r"C:\Users\599xx\Desktop\Hlam\audio")
+                shutil.move(i, os.path.join(a, 'audio'))
             except shutil.Error:
                 continue
         elif i.suffix in ['.zip', '.gz', '.tar']:
             try:
-                shutil.move(i, r"C:\Users\599xx\Desktop\Hlam\archives")
+                shutil.move(i, os.path.join(a, 'archives'))
             except shutil.Error:
                 continue
 
 
-archives = r"C:\Users\599xx\Desktop\Hlam\archives"
+archives = os.path.join(a, 'archives')
 
 
 def unpack(archives):
-    archives = r"C:\Users\599xx\Desktop\Hlam\archives"
+    archives = os.path.join(a, 'archives')
     for i in Path(archives).iterdir():
         if i.is_file and i.suffix in ['.zip', '.gz', '.tar']:
-            shutil.unpack_archive(i, Path(r"C:\Users\599xx\Desktop\Hlam\archives") / i.stem)
+            shutil.unpack_archive(i, Path(arvhives) / i.stem)
 
 
 d = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяєіїґ"
